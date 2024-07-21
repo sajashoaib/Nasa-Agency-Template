@@ -1,0 +1,828 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+:root {
+  --main-color: #19c8fa;
+  --tran-color: rgb(15 116 143 / 70%);
+  --sec-padding: 100px;
+}
+html {
+  scroll-behavior: smooth; /*لو ضغطت ع مكان بالصفحة بينزل بطريقىscroll*/
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+ul {
+  list-style: none;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.mainhead {
+  text-align: center;
+}
+.mainhead h2 {
+  font-weight: normal;
+  font-size: 40px;
+  position: relative;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  padding-top: 10px;
+}
+
+.mainhead h2::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background-color: #333;
+  bottom: -30px;
+  width: 120px;
+}
+.mainhead h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  bottom: -38px;
+  background-color: white;
+}
+.mainhead p {
+  width: 550px;
+  margin: 0 auto 20px;
+  max-width: 100%;
+  line-height: 2;
+  color: #777;
+}
+/****************************************************************************************************/
+header {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* عملنالو بوزشين عشان اي ابن من اولاده ما يطلع برا*/
+  min-height: 97px; /* عمناها عشان لو زودنا البادنق تبع اللينكات يزيد معي وما يوقف*/
+}
+header .container::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  background-color: #a2a2a2;
+  bottom: 0;
+  left: 15px;
+  width: calc(
+    100% - 30px
+  ); /* عملن هيك لان البادنق ماخد 30وانا بدي الخط يبدا من بداية اللوجو وينتهي بنهاية الناف*/
+}
+header .container .logo img {
+  width: 40px;
+}
+header nav {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+}
+header nav ul {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  header nav ul {
+    display: none;
+  }
+}
+
+header nav ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  padding: 40px 10px;
+  position: relative;
+  z-index: 2;
+}
+
+header nav ul li a.active {
+  color: var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}
+
+header nav ul li a:hover {
+  color: var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+}
+header nav .form {
+  width: 40px;
+  height: 20px;
+  position: relative;
+  margin-left: 40px;
+  border-left: 1px solid white;
+}
+header nav .form i {
+  position: absolute;
+  color: white;
+  font-size: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+header nav .menna {
+  color: white;
+  font-size: 22px;
+}
+@media (min-width: 768px) {
+  header nav .menna {
+    display: none;
+  }
+}
+header nav .menna:hover + ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute; /*عشان اوزع العناصر*/
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.582);
+}
+/******************************************************************************************************/
+.landing {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("../image/background.jpg");
+  background-size: cover;
+  /*background-color: #1f2021; هاد اللون رح يظهر لو الصورة كان فيها مشكلة ومش بتظهر يعتبر بديل عن الصورة*/
+}
+.landing .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 60%);
+}
+.landing .text {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  padding: 50px;
+  background-color: var(--tran-color);
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  .landing .text {
+    width: 100%;
+  }
+
+  .landing .text .content {
+    max-width: 100%;
+  }
+}
+.landing .text .content {
+  max-width: 500px;
+}
+.landing .text .content h2 {
+  font-size: 30px;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.landing .text .content p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.landing .change {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .landing .change {
+    display: none;
+  }
+}
+.landing .fa-angle-left {
+  left: 30px;
+}
+
+.landing .fa-angle-right {
+  right: 30px;
+}
+.landing .bubble {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  display: flex;
+}
+
+.landing .bubble li {
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+/*************************************************************************************************************/
+
+.benifit {
+  padding-top: var(--sec-padding);
+  padding-bottom: var(--sec-padding);
+}
+
+@media (min-width: 768px) {
+  .benifit .benfit-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    column-gap: 40px;
+    row-gap: 60px;
+  }
+}
+.benifit .box {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .benifit .box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .benifit .box i {
+    margin: 0 0 30px;
+  }
+}
+
+.benifit .box i {
+  margin-right: 50px;
+  font-size: 40px;
+  color: #333;
+}
+
+.benifit .benfit-container .box .text h3 {
+  margin-bottom: 25px;
+  color: var(--main-color);
+}
+
+.benifit .box .text p {
+  line-height: 1.4;
+  color: #777;
+}
+/**************************************************************************************************************/
+.protofolio {
+  padding-top: var(--sec-padding);
+  padding-bottom: var(--sec-padding);
+}
+.protofolio .shuffle {
+  display: flex;
+  justify-content: center;
+}
+.protofolio .shuffle li {
+  padding: 10px;
+}
+
+.protofolio .shuffle li.active {
+  background-color: var(--main-color);
+  color: white;
+}
+.protofolio .img-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+.protofolio .img-container .box {
+  flex-basis: 25%;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .protofolio .img-container .box {
+    flex-basis: 50%; /*يعني بس عنصرين في الشاشة*/
+  }
+}
+
+@media (min-width: 1199px) {
+  .protofolio .img-container .box {
+    flex-basis: 25%; /*يعني بس اربعة عناصر  في الشاشة*/
+  }
+}
+
+@media (max-width: 768px) {
+  .protofolio .img-container .box {
+    flex-basis: 100%; /*يعني بس اربعة عناصر  في الشاشة*/
+  }
+}
+.protofolio .img-container .box img {
+  max-width: 100%;
+  transition: 0.3s;
+}
+.protofolio .img-container .box:hover .caption {
+  bottom: 0;
+}
+
+.protofolio .img-container .box:hover img {
+  transform: rotate(3deg) scale(1.1);
+}
+.protofolio .img-container .box .caption {
+  position: absolute;
+  padding: 20px;
+  /*left: 20px;*/
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  transition: 0.3s;
+  bottom: -100%;
+}
+.protofolio .img-container .box .caption h4 {
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+.protofolio .img-container .box .caption p {
+  color: var(--main-color);
+}
+
+.protofolio .more {
+  background-color: var(--main-color);
+  color: white;
+  padding: 15px 20px;
+  display: block;
+  width: fit-content;
+  margin: 30px auto;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+/**************************************************************************************************************/
+.video {
+  position: relative;
+}
+.video ::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 5%);
+}
+.video video {
+  width: 100%;
+}
+
+.video .text {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px;
+  color: white;
+  text-align: center;
+  background-color: var(--tran-color);
+}
+
+.video .text h2 {
+  margin: 0 0 30px;
+  text-transform: uppercase;
+  font-weight: normal;
+  word-spacing: 4px;
+}
+
+.video .text p {
+  margin-bottom: 20px;
+}
+
+.video .text button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  text-transform: uppercase;
+}
+.about {
+  padding-top: var(--sec-padding);
+  text-align: center;
+}
+/***************************************************************************************************************/
+.stats {
+  padding-top: var(--sec-padding);
+  padding-bottom: var(--sec-padding);
+  text-align: center;
+  background-image: url(../image/three.jpg);
+  background-size: cover;
+  position: relative; /*عملناها عشان طبقة ال oveerlay*/
+}
+.stats::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 30%);
+}
+.stats .container {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative; /* عشان نخلي الكونتينر فوق طبقة الشفافية والخصائص اللي تحت كمان لنفس السبب*/
+}
+.stats .container .box {
+  color: white;
+  padding: 50px;
+  background-color: var(--tran-color);
+}
+/* هاد عشان اظهر العناصر بالشاشات .واحنا هيك عرفنا شو وظيفة ال flex basis  عشان تظهرلي كم عنصر بدي بالشاشة**/
+
+@media (max-width: 767px) {
+  .stats .container .box {
+    flex-basis: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .stats .container .box {
+    flex-basis: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .stats .container .box {
+    flex-basis: 25%;
+  }
+}
+
+.stats .container .box i {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin: 0 auto 30px;
+  flex-wrap: nowrap;
+}
+.stats .container .box .number {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 0 20px;
+}
+.stats .container .box p {
+  font-size: 14px;
+}
+/**********************************************************************************************************/
+.ourskills {
+  padding-top: var(--sec-padding);
+  padding-bottom: var(--sec-padding);
+}
+.ourskills .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+@media (min-width: 992px) {
+  .ourskills .container > div {
+    flex-basis: 45%;
+  }
+}
+.ourskills .container > div > h3 {
+  margin: 0 0 30px;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+}
+.ourskills .container > div > p {
+  color: #777;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.ourskills .container .astronaut-member .content {
+  display: flex;
+  margin-bottom: 40px;
+  align-items: center;
+}
+.ourskills .container .astronaut-member .content img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 50px;
+}
+
+@media (max-width: 767px) {
+  .ourskills .container .astronaut-member .content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .ourskills .container .astronaut-member .content img {
+    margin: 0 auto 20px;
+  }
+}
+.ourskills .container .astronaut-member .text {
+  border-bottom: 1px solid #777;
+  line-height: 1.3;
+}
+.ourskills .container .astronaut-member .text p {
+  color: #777;
+  text-align: right;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+.ourskills .container .astronaut-member .bubble {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.ourskills .container .astronaut-member .bubble li {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.ourskills .skills .progress {
+  margin-bottom: 50px;
+}
+.ourskills .skills .progress h4 {
+  margin-bottom: 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.ourskills .skills .progress .prog {
+  background-color: #dedadc;
+  height: 30px;
+}
+
+.ourskills .skills .progress .prog span {
+  display: block;
+  background-color: var(--main-color);
+  height: 100%;
+  position: relative;
+}
+
+.ourskills .skills .progress .prog span::before {
+  content: attr(data-prog);
+  position: absolute;
+  color: white;
+  background-color: black;
+  top: -40px;
+  right: -18px;
+  padding: 4px 0;
+  width: 40px;
+  text-align: center;
+  border-radius: 4px;
+}
+.ourskills .skills .progress .prog span::after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-width: 8px;
+  border-color: rgb(0, 0, 0) transparent transparent transparent;
+  right: -8px;
+  top: -15px;
+}
+/****************************************************************************************************************/
+.subscribe {
+  padding-top: var(--sec-padding);
+  padding-bottom: var(--sec-padding);
+  background-image: url(../image/sub.jpg);
+  background-size: cover;
+  position: relative;
+  color: white;
+}
+.subscribe::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 50%);
+}
+.subscribe .container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .subscribe .container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.subscribe form {
+  display: flex; /*عشان الازرار والانبت يكونو جنب بعض*/
+  position: relative; /*عشان احرك الايقونة*/
+  width: 500px;
+  max-width: 100%; /*عشان ما يتعدى على حجم شاشة الهاتف*/
+}
+.subscribe form i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 30px;
+}
+
+.subscribe form input[type="email"] {
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 20px 20px 20px 60px;
+  color: var(--main-color); /*لون الكتابة لما نجي نكتب*/
+  width: calc(100% -130px); /*130 حجم زر السبمت*/
+  border-right: none;
+}
+
+.subscribe form input[type="submit"] {
+  width: 130px;
+  background-color: var(--main-color);
+  color: white;
+  padding: 10px 20px;
+  border: 1px solid white;
+  text-transform: uppercase;
+  border-left: none;
+}
+.subscribe form ::placeholder {
+  color: white;
+}
+
+@media (max-width: 991px) {
+  .subscribe p {
+    margin: 30px 0;
+  }
+}
+.subscribe p {
+  line-height: 1.4;
+  margin-left: 50px;
+}
+/************************************************************************************************************/
+.contact .content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+@media (max-width: 767px) {
+  .contact .content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.contact .content form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.contact .content form .maininput {
+  padding: 20px;
+  display: block;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
+  width: 100%;
+}
+.contact .content form .maininput:focus {
+  outline: none;
+}
+.contact .content form textarea.maininput {
+  height: 150px;
+}
+.contact .content form input[type="submit"] {
+  background-color: var(--main-color);
+  color: white;
+  padding: 20px;
+  border: none;
+  margin-left: auto;
+  display: flex;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .contact .content .info {
+    order: -1;
+    text-align: center;
+  }
+}
+
+.contact .content .info h4 {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.contact .content .info .phone {
+  display: block;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.contact .content .info h4:nth-of-type(2) {
+  margin-top: 100px;
+}
+
+@media (max-width: 767px) {
+  .contact .content .info h4:nth-of-type(2) {
+    margin-top: 30px;
+  }
+}
+.contact .content .info address {
+  color: #777;
+  line-height: 1.4;
+}
+
+@media (max-width: 767px) {
+  .contact .content .info address {
+    margin-bottom: 30px;
+  }
+}
+/***********************************************************************************************************/
+.footer {
+  padding-top: calc(var(--sec-padding) / 2);
+  padding-bottom: calc(var(--sec-padding) / 2);
+  background-image: url(../image/end.jpg);
+  background-size: cover;
+  position: relative;
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 40%);
+}
+.footer .container {
+  position: relative; /*عشان يظهر المحتوى فوق طبقة الشفافية */
+}
+.footer p:not(.copyright) {
+  text-transform: uppercase;
+  padding: 20px;
+  border-bottom: 1px solid white;
+  font-size: 22px;
+  width: fit-content; /*عشان البوردر يجي ع طول العنصر*/
+  margin: 20px auto;
+}
+.footer .socialmedia i {
+  padding: 15px 10px;
+  font-size: 20px;
+}
+
+.footer .copyright {
+  margin: 60px;
+}
+
+.footer .copyright span {
+  font-weight: bold;
+  color: var(--main-color);
+}
+/*****************************************************************************************************************/
